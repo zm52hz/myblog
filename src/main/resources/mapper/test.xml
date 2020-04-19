@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 映射 接口 IBookDao -->
+<mapper namespace="com.blog.dao.test">
+
+    <select id="listAll" resultType="com.blog.entity.Top50" >
+        select a.animename animename,a.follwnum follwnum,a.pts pts  from topfityinfo a where day = (select max(day)maxday from topfityinfo ) ORDER BY a.pts  desc LIMIT 0,10
+    </select>
+    <resultMap id="mymap" type="com.blog.entity.Top50">
+        <result property="animename" column="animename" />
+        <result property="follwnum" column="follwnum"/>
+        <result property="pts" column="pts"/>
+    </resultMap>
+
+
+
+</mapper>

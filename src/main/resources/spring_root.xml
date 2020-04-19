@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:contxt="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 扫描 service 包下面使用@Component/@Service/@Repository/@Controller 注解的类 将其实例化，放入容器中   -->
+    <contxt:component-scan base-package="com.blog" />
+
+    <!--创建数据源-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <!-- 数据库驱动 -->
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+        <!-- 数据库连接 -->
+        <property name="url" value="jdbc:mysql://122.51.51.102:3306/bilibilidata?characterEncoding=UTF-8" />
+        <!-- 数据库用户名 -->
+        <property name="username" value="root"/>
+        <!-- 数据库密码 -->
+        <property name="password" value="zhuming52hz"/>
+    </bean>
+
+    <!-- 配置mybatis  -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 数据源的实例化 -->
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 映射 DML 语法 -->
+        <property name="mapperLocations" value="classpath:/mapper/*.xml"/>
+    </bean>
+    <!-- 映射 数据访问层 ( dao ) 中的接口 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <property name="basePackage" value="com.blog.dao"/>
+    </bean>
+
+</beans>
