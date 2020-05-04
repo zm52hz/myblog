@@ -10,7 +10,7 @@
     <!-- 启动 mvc 的常用注解 -->
     <mvc:annotation-driven/>
     <!--将所有的静态资源，交给 Servlet 处理-->
-    <mvc:default-servlet-handler/>
+    <mvc:resources location="/WEB-INF/templates/" mapping="/statics/**"></mvc:resources>
 
     <!--配置 view 解析器-->
     <!-- 页面接受数据 -->
@@ -20,9 +20,9 @@
 <!--        <property name="suffix" value=".jsp" />-->
 <!--    </bean>-->
     <bean id="templateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
-        <property name="prefix" value="/templates/" />
+        <property name="prefix" value="/WEB-INF/templates/" />
         <property name="suffix" value=".html" />
-        <property name="templateMode" value="HTML5" />
+        <property name="templateMode" value="LEGACYHTML5" />
         <property name="cacheable" value="false" />
         <property name="characterEncoding" value="UTF-8"/>
     </bean>

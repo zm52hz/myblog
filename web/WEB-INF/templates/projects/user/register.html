@@ -1,0 +1,38 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <script type="text/javascript" src="static/js/jquery-1.10.2.min.js"
+            th:src="@{/static/js/jquery-1.10.2.min.js}"></script>
+
+    <script th:inline="javascript">
+        $(function () {
+            var _ctx = [[${application.ctx}]];
+            alert("Project ContextPath:" + _ctx);
+            alert("路径:" + $("#ctx").val());
+        });
+    </script>
+    <title>用户注册</title>
+</head>
+<body>
+<form action="http://localhost:8080/myblog/toRegister" method="post">
+    <table>
+        <tr>
+            <td><span>账号：</span></td>
+            <td><input type="text" name="user_name"/></td>
+        </tr>
+        <tr>
+            <td><span>密码：</span></td>
+            <td><input type="text" name="user_passwd"/></td>
+        </tr>
+        <tr>
+            <td><span>确认密码：</span></td>
+            <td><input type="text" name="user_passwd_confirm"/></td>
+        </tr>
+        <tr>
+            <td><button type="submit">确定</button></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

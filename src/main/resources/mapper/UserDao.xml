@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 映射 接口 IBookDao -->
+<mapper namespace="com.blog.dao.UserDao">
+    <resultMap id="blogUser_id" type="com.blog.entity.BlogUser">
+        <result property="id" column="id" />
+        <result property="user_realname" column="user_realname"/>
+        <result property="user_call" column="user_call"/>
+        <result property="user_name" column="user_name"/>
+        <result property="user_passwd" column="user_passwd"/>
+        <result property="user_comment" column="user_comment"/>
+        <result property="user_phone" column="user_phone"/>
+
+    </resultMap>
+
+    <select id="getOneUserByUserNameAndPassWd"
+           parameterType="com.blog.entity.BlogUser" resultMap="blogUser_id">
+        select a.id,a.user_realname,a.user_call,a.user_name,a.user_passwd,a.user_comment,a.user_phone
+        from blog_user a where a.user_name = #{user_name} and a.user_passwd = #{user_passwd}
+    </select>
+
+
+<!--    <parameterMap id="blogUserNamePassWd" type="com.blog.entity.BlogUser">-->
+<!--        <parameter property="" />-->
+<!--    </parameterMap>-->
+
+    <insert id="addOneUser" parameterType="com.blog.entity.BlogUser">
+        insert into blog_user(id,user_realname,user_call,user_name,user_passwd,user_comment,user_phone)values
+        (#{id},#{user_realname},#{user_call},#{user_name},#{user_passwd},#{user_comment},#{user_phone})
+    </insert>
+
+</mapper>

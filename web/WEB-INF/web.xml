@@ -27,7 +27,7 @@
     <!--将 请求 截取 转交给 webs -->
     <servlet-mapping>
         <servlet-name>webs</servlet-name>
-        <url-pattern>*.do</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
 </web-app>

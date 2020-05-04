@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <span th:text="${WARN_INFO}">落霞与孤鹜齐飞，秋水共长天一色</span>
+</div>
+<form action="http://localhost:8080/myblog/tologin" method="post">
+    <table>
+        <tr>
+            <td><span>账号：</span></td>
+            <td><input type="text" name="user_name"/></td>
+        </tr>
+        <tr>
+            <td><span>密码：</span></td>
+            <td><input type="text" name="user_passwd"/></td>
+        </tr>
+        <tr>
+            <td><button type="submit">确定</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
