@@ -55,4 +55,13 @@ public class UserController {
         //注册完成后登录
         return this.login(mm,request,registerUser);
     }
+
+    //用户注册相关
+    @RequestMapping("logoff")
+    public String logoff(ModelMap mp, HttpServletRequest request){//展示用户注册界面
+        request.getSession().setAttribute(PublicDefine.SESSION_LOGIN_USERNAME,
+                null);//记录登录的用户为null
+
+        return "/projects/user/login";
+    }
 }
